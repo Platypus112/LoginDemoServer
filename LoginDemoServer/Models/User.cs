@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LoginDemoServer.Models;
 
-public partial class Users
+public partial class User
 {
     [Key]
     [StringLength(100)]
@@ -25,4 +25,7 @@ public partial class Users
 
     [StringLength(50)]
     public string Name { get; set; } = null!;
+
+    [InverseProperty("EmailNavigation")]
+    public virtual ICollection<Grade> Grades { get; set; } = new List<Grade>();
 }
